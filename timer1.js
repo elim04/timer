@@ -6,38 +6,19 @@
 //an input is not a number, skip as well. 
 
 //process.stdout.write('\x07'); for beeping 
-
-const args = process.argv
 //get the arguments separated 
-const finalArgs = process.argv.slice(2);
-let numArgs = [];
-let cleanArgs = [];
-
-// convert args to numbers 
-for (let arg of finalArgs) {
-  numArgs.push(Number(arg));
-}
-
-//making sure only numbers are in array now
-for (let arg of numArgs) {
-  if (Number.isInteger(arg) && arg > 0) {
-    cleanArgs.push(arg);
-  }
-}
-console.log(cleanArgs)
-//sort them so you can follow the order of beeps
-
-let sortedArgs = cleanArgs.sort((a, b) => a - b);
-console.log(sortedArgs)
+const args = process.argv.slice(2);
 
 //creating for loop to do timer for each number inputted
-for (let arg of sortedArgs) {
-  
+for (let arg of args) {
   let timeDelay = arg * 1000;
-  console.log(timeDelay)
-  setTimeout(() => {
-    process.stdout.write('\x07')
-  }, timeDelay);
+  if (timeDelay) {
+    setTimeout(() => {
+      process.stdout.write('\x07')
+    }, timeDelay);
+
+  }
+  // console.log(timeDelay)
 
 }
 
