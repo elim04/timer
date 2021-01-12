@@ -9,10 +9,10 @@
 //get the arguments separated 
 const args = process.argv.slice(2);
 
-//creating for loop to do timer for each number inputted
+//creating for loop to do timer for each number inputted if the timeDelay turns to false because 1000 x a letter is Nan === false it won't do the time delay
 for (let arg of args) {
   let timeDelay = arg * 1000;
-  if (timeDelay) {
+  if (timeDelay && timeDelay > 0) {
     setTimeout(() => {
       process.stdout.write('\x07')
     }, timeDelay);
